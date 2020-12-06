@@ -134,15 +134,17 @@ while t!=100:
         if (x=='done'):
                 b=False
         else:
-                index = randrange(n)
-                x= lst[index]
+                index = randrange(n)	# gets a random number within the bounds of len(lst)
+                x= lst[index]  # gets the word that is at 'index' from list of data
+		# this 'x' is the pattern that needs to be matched 
                 t=t+1
+		
                 ## kmp
-                before1 = time()
+                before1 = time()	# take time before the algorithm has started running
                 KMPSearch(x, data)
-                after1 = time()
-                total_time_kmp = after1 - before1
-                sum_kmp += total_time_kmp
+                after1 = time()		# take time after the algorithm has terminated	
+                total_time_kmp = after1 - before1   # take difference 
+                sum_kmp += total_time_kmp	# sum the time taken with the last ones so average can be calculated
                 
                 ## rabin karp
                 before2 = time()
@@ -151,13 +153,15 @@ while t!=100:
                 after2 = time()
                 total_time_rabin_karp = after2 - before2
                 sum_rabin_karp += total_time_rabin_karp
-                k.append(total_time_kmp)
-                r.append(total_time_rabin_karp)
+                k.append(total_time_kmp)	# append the time taken by kmp to k[] , this is done to plot graphs
+                r.append(total_time_rabin_karp)		# append the time taken by Rabin Karp ro r[]
 
 
-
+# calculate averages and print
 print("average time taken by kmp to match: ", sum_kmp/t)
 print("average time taken by rabin_karp to match: ", sum_rabin_karp/t)
+
+# Time plots
 plt.plot(k, 'r--', r, 'g--')
 red_patch = mpatches.Patch(color='red', label='KMP')
 green_patch = mpatches.Patch(color='green', label='Rabin Karp')
