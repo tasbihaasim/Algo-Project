@@ -6,6 +6,7 @@ import matplotlib.patches as mpatches
 # d is the number of characters in the input alphabet
 d = 256
 
+#code for rabin karp algorithm
 def search(pat, txt, q): 
 	M = len(pat) 
 	N = len(txt) 
